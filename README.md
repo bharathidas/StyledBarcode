@@ -20,6 +20,11 @@ Download `com.mxtechies.widget.web.StyledBarcode.mpk` from the
 [latest release](https://github.com/bharathidas/StyledBarcode/releases) (or the Mendix Marketplace)
 and drop it into the `widgets` folder of your app, then press F4 in Studio Pro.
 
+Prefer a working example? Import
+[Styled Barcode Demo](https://github.com/bharathidas/StyledBarcodeDemo) instead: one page with fifteen
+sections covering every feature, with sample data and the microflows behind the actions. It bundles this
+widget, so a single import installs both.
+
 ## Usage
 
 1. Drop **Styled Barcode** on a page.
