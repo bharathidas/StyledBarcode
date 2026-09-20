@@ -175,7 +175,11 @@ Apache-2.0, © MX Techies 2026.
 
 ## Screenshots
 
-All ten are taken from the demo page in the example app.
+The widget selected in Studio Pro, with its design-time preview and the Properties pane:
+
+![Styled Barcode selected in the Studio Pro page editor](docs/studio-pro.png)
+
+The rest are taken from the demo page in the example app.
 
 | | |
 | --- | --- |
@@ -184,5 +188,5 @@ All ten are taken from the demo page in the example app.
 | ![Size and rotation, encoding options](docs/screenshots/screenshot-5.png) | ![Validation, and saving an SVG data URI](docs/screenshots/screenshot-6.png) |
 | ![Saving the image and the encoded value to attributes](docs/screenshots/screenshot-7.png) | ![Bulk list mode with label sheets, and the symbology gallery](docs/screenshots/screenshot-8.png) |
 
-Every property in Studio Pro: [data, GS1 fields, lists and design](docs/screenshots/screenshot-9.png),
-[encoding, toolbar, attributes and events](docs/screenshots/screenshot-10.png).
+Also in the set: [the widget in Studio Pro](docs/screenshots/screenshot-9.png) and
+[a reference of all 98 properties](docs/screenshots/screenshot-10.png), generated from the widget XML.
