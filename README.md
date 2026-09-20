@@ -175,9 +175,12 @@ Apache-2.0, © MX Techies 2026.
 
 ## Screenshots
 
-The widget selected in Studio Pro, with its design-time preview and the Properties pane:
+The widget in Studio Pro. Structure mode shows where it sits in the page and the GS1 fields of the
+selected code; Design mode renders the barcode at design time.
 
-![Styled Barcode selected in the Studio Pro page editor](docs/studio-pro.png)
+![Styled Barcode selected in Structure mode, with the GS1 element string fields](docs/studio-pro-structure.png)
+
+![Styled Barcode in Design mode, rendering a Code 128 preview](docs/studio-pro.png)
 
 The rest are taken from the demo page in the example app.
 
@@ -188,5 +191,5 @@ The rest are taken from the demo page in the example app.
 | ![Size and rotation, encoding options](docs/screenshots/screenshot-5.png) | ![Validation, and saving an SVG data URI](docs/screenshots/screenshot-6.png) |
 | ![Saving the image and the encoded value to attributes](docs/screenshots/screenshot-7.png) | ![Bulk list mode with label sheets, and the symbology gallery](docs/screenshots/screenshot-8.png) |
 
-Also in the set: [the widget in Studio Pro](docs/screenshots/screenshot-9.png) and
+Also in the set: [the widget in Studio Pro, Structure and Design mode](docs/screenshots/screenshot-9.png) and
 [a reference of all 98 properties](docs/screenshots/screenshot-10.png), generated from the widget XML.
