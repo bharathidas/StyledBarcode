@@ -1,0 +1,160 @@
+/* Styled Barcode widget. Root: .mxt-bc (single) or .mxt-bc-list (list mode). */
+
+.mxt-bc {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.mxt-bc--fit {
+    display: flex;
+    width: 100%;
+}
+
+.mxt-bc--clickable {
+    cursor: pointer;
+}
+
+.mxt-bc--clickable:focus-visible {
+    outline: 2px solid #264ae5;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.mxt-bc__stage {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.mxt-bc--fit .mxt-bc__stage {
+    display: block;
+    width: 100%;
+}
+
+/* The widget sets the natural width/height on this box; it may shrink inside narrow containers. */
+.mxt-bc__code {
+    position: relative;
+    display: block;
+    max-width: 100%;
+    box-sizing: border-box;
+    line-height: 0;
+}
+
+.mxt-bc__code--fit {
+    width: 100%;
+    height: auto;
+}
+
+.mxt-bc__svg {
+    width: 100%;
+    height: 100%;
+}
+
+.mxt-bc__svg > svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.mxt-bc__code--fit .mxt-bc__svg > svg {
+    height: auto;
+}
+
+/* Empty and invalid states keep a visible placeholder so the layout does not collapse. */
+.mxt-bc__code--empty {
+    min-width: 160px;
+    min-height: 64px;
+    border: 2px dashed #c9cdd4;
+    border-radius: 8px;
+    background: repeating-linear-gradient(45deg, transparent 0 10px, rgba(0, 0, 0, 0.03) 10px 20px);
+}
+
+.mxt-bc__code--empty .mxt-bc__svg {
+    display: none;
+}
+
+.mxt-bc__notice,
+.mxt-bc__structure {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    text-align: center;
+    line-height: 1.3;
+    font-size: 0.875em;
+    color: #6c717a;
+}
+
+.mxt-bc__notice--error {
+    color: #b3261e;
+}
+
+.mxt-bc--invalid .mxt-bc__code--empty {
+    border-color: #f2b8b5;
+    background: #fde8e6;
+}
+
+.mxt-bc__structure {
+    font: 700 20px/1 sans-serif;
+    letter-spacing: 0.1em;
+    color: #8a8f99;
+}
+
+.mxt-bc__caption {
+    text-align: center;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+/* Toolbar */
+.mxt-bc__toolbar,
+.mxt-bc-list__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    max-width: 100%;
+}
+
+.mxt-bc-list__toolbar {
+    flex-basis: 100%;
+    justify-content: flex-start;
+}
+
+.mxt-bc__button--done {
+    opacity: 0.85;
+}
+
+/* List mode */
+.mxt-bc-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.mxt-bc-list--busy .mxt-bc-list__toolbar {
+    opacity: 0.6;
+}
+
+.mxt-bc-list__empty {
+    color: #6c717a;
+    font-style: italic;
+}
+
+.mxt-bc--preview-ghost {
+    opacity: 0.5;
+}
+
+@media print {
+    .mxt-bc__toolbar,
+    .mxt-bc-list__toolbar {
+        display: none;
+    }
+}

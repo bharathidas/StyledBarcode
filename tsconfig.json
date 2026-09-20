@@ -1,0 +1,12 @@
+{
+    "extends": "@mendix/pluggable-widgets-tools/configs/tsconfig.base.json",
+    "compilerOptions": {
+        "baseUrl": "./",
+        "outDir": "./dist/tmp",
+        "rootDir": "./",
+        "paths": {
+            "bwip-js/browser": ["node_modules/bwip-js/dist/bwip-js.d.ts"]
+        }
+    },
+    "include": ["./src", "./typings"]
+}

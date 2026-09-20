@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="com.mxtechies.widget.web.styledbarcode.StyledBarcode" pluginWidget="true" offlineCapable="true" supportedPlatform="Web" xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>Styled Barcode</name>
+    <description>Barcodes in more than 70 symbologies (Code 128, GS1-128, EAN/UPC, ISBN, Code 39/93, ITF-14, Codabar, GS1 DataBar, Data Matrix, PDF417, Aztec, MaxiCode, postal codes and more) powered by bwip-js. Builds GS1 element strings and Digital Links from fields, styles bars, text, colours, rotation and border, validates the data, saves the image as base64 to an attribute, downloads as SVG/PNG/JPEG/WEBP, copies, prints and renders a whole list with ZIP and label-sheet exports.</description>
+    <studioProCategory>Display</studioProCategory>
+    <studioCategory>Display</studioCategory>
+    <properties>
+        <propertyGroup caption="General">
+            <propertyGroup caption="Data">
+                <property key="displayMode" type="enumeration" defaultValue="single">
+                    <caption>Render as</caption>
+                    <description>'Single' renders one barcode from the page context. 'List' renders one barcode per object of a data source.</description>
+                    <enumerationValues>
+                        <enumerationValue key="single">Single barcode</enumerationValue>
+                        <enumerationValue key="list">List of barcodes</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="symbology" type="enumeration" defaultValue="code128">
+                    <caption>Symbology</caption>
+                    <description>Barcode type. GS1 types expect application identifiers in brackets, e.g. '(01)09521234543213(10)LOT1'. Choose 'Custom (BWIPP name)' for any other encoder supported by bwip-js.</description>
+                    <enumerationValues>
+                        <enumerationValue key="code128">Code 128</enumerationValue>
+                        <enumerationValue key="gs1_128">GS1-128 (EAN-128)</enumerationValue>
+                        <enumerationValue key="ean13">EAN-13 (add-on after a space)</enumerationValue>
+                        <enumerationValue key="ean8">EAN-8</enumerationValue>
+                        <enumerationValue key="upca">UPC-A</enumerationValue>
+                        <enumerationValue key="upce">UPC-E</enumerationValue>
+                        <enumerationValue key="isbn">ISBN</enumerationValue>
+                        <enumerationValue key="issn">ISSN</enumerationValue>
+                        <enumerationValue key="ismn">ISMN</enumerationValue>
+                        <enumerationValue key="ean14">EAN-14 / GTIN-14</enumerationValue>
+                        <enumerationValue key="sscc18">SSCC-18</enumerationValue>
+                        <enumerationValue key="code39">Code 39</enumerationValue>
+                        <enumerationValue key="code39ext">Code 39 Extended</enumerationValue>
+                        <enumerationValue key="code93">Code 93</enumerationValue>
+                        <enumerationValue key="code93ext">Code 93 Extended</enumerationValue>
+                        <enumerationValue key="interleaved2of5">Interleaved 2 of 5 (ITF)</enumerationValue>
+                        <enumerationValue key="itf14">ITF-14</enumerationValue>
+                        <enumerationValue key="code2of5">Code 25 (Industrial)</enumerationValue>
+                        <enumerationValue key="codabar">Codabar</enumerationValue>
+                        <enumerationValue key="code11">Code 11</enumerationValue>
+                        <enumerationValue key="msi">MSI Plessey</enumerationValue>
+                        <enumerationValue key="plessey">Plessey UK</enumerationValue>
+                        <enumerationValue key="telepen">Telepen</enumerationValue>
+                        <enumerationValue key="pharmacode">Pharmacode</enumerationValue>
+                        <enumerationValue key="pharmacode2">Two-track Pharmacode</enumerationValue>
+                        <enumerationValue key="code32">Italian Pharmacode (Code 32)</enumerationValue>
+                        <enumerationValue key="pzn">PZN (Pharmazentralnummer)</enumerationValue>
+                        <enumerationValue key="databaromni">GS1 DataBar Omnidirectional</enumerationValue>
+                        <enumerationValue key="databarstacked">GS1 DataBar Stacked</enumerationValue>
+                        <enumerationValue key="databarstackedomni">GS1 DataBar Stacked Omnidirectional</enumerationValue>
+                        <enumerationValue key="databarlimited">GS1 DataBar Limited</enumerationValue>
+                        <enumerationValue key="databartruncated">GS1 DataBar Truncated</enumerationValue>
+                        <enumerationValue key="databarexpanded">GS1 DataBar Expanded</enumerationValue>
+                        <enumerationValue key="databarexpandedstacked">GS1 DataBar Expanded Stacked</enumerationValue>
+                        <enumerationValue key="datamatrix">Data Matrix</enumerationValue>
+                        <enumerationValue key="datamatrixrectangular">Data Matrix Rectangular</enumerationValue>
+                        <enumerationValue key="gs1datamatrix">GS1 Data Matrix</enumerationValue>
+                        <enumerationValue key="gs1dldatamatrix">GS1 Digital Link Data Matrix</enumerationValue>
+                        <enumerationValue key="pdf417">PDF417</enumerationValue>
+                        <enumerationValue key="pdf417compact">Compact PDF417</enumerationValue>
+                        <enumerationValue key="micropdf417">MicroPDF417</enumerationValue>
+                        <enumerationValue key="azteccode">Aztec Code</enumerationValue>
+                        <enumerationValue key="azteccodecompact">Compact Aztec Code</enumerationValue>
+                        <enumerationValue key="qrcode">QR Code</enumerationValue>
+                        <enumerationValue key="microqrcode">Micro QR Code</enumerationValue>
+                        <enumerationValue key="rectangularmicroqrcode">Rectangular Micro QR (rMQR)</enumerationValue>
+                        <enumerationValue key="gs1qrcode">GS1 QR Code</enumerationValue>
+                        <enumerationValue key="gs1dlqrcode">GS1 Digital Link QR Code</enumerationValue>
+                        <enumerationValue key="swissqrcode">Swiss QR Code</enumerationValue>
+                        <enumerationValue key="maxicode">MaxiCode</enumerationValue>
+                        <enumerationValue key="dotcode">DotCode</enumerationValue>
+                        <enumerationValue key="hanxin">Han Xin Code</enumerationValue>
+                        <enumerationValue key="codeone">Code One</enumerationValue>
+                        <enumerationValue key="ultracode">Ultracode</enumerationValue>
+                        <enumerationValue key="codablockf">Codablock F</enumerationValue>
+                        <enumerationValue key="code16k">Code 16K</enumerationValue>
+                        <enumerationValue key="code49">Code 49</enumerationValue>
+                        <enumerationValue key="postnet">USPS POSTNET</enumerationValue>
+                        <enumerationValue key="planet">USPS PLANET</enumerationValue>
+                        <enumerationValue key="onecode">USPS Intelligent Mail</enumerationValue>
+                        <enumerationValue key="royalmail">Royal Mail 4 State (RM4SCC)</enumerationValue>
+                        <enumerationValue key="mailmark">Royal Mail Mailmark</enumerationValue>
+                        <enumerationValue key="auspost">Australia Post 4 State</enumerationValue>
+                        <enumerationValue key="kix">Dutch KIX</enumerationValue>
+                        <enumerationValue key="japanpost">Japan Post 4 State</enumerationValue>
+                        <enumerationValue key="identcode">Deutsche Post Identcode</enumerationValue>
+                        <enumerationValue key="leitcode">Deutsche Post Leitcode</enumerationValue>
+                        <enumerationValue key="hibccode128">HIBC Code 128</enumerationValue>
+                        <enumerationValue key="hibccode39">HIBC Code 39</enumerationValue>
+                        <enumerationValue key="hibcdatamatrix">HIBC Data Matrix</enumerationValue>
+                        <enumerationValue key="hibcpdf417">HIBC PDF417</enumerationValue>
+                        <enumerationValue key="custom">Custom (BWIPP name)</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="customSymbology" type="expression" required="false">
+                    <caption>Custom symbology</caption>
+                    <description>BWIPP encoder name used when 'Symbology' is 'Custom', e.g. 'databarexpandedcomposite' or 'hibcazteccode'. See the bwip-js symbology list.</description>
+                    <returnType type="String" />
+                </property>
+                <property key="payloadType" type="enumeration" defaultValue="text">
+                    <caption>Payload</caption>
+                    <description>What the barcode encodes. 'Value' encodes the value as is. 'GS1 element string' builds '(01)...(17)...(10)...' from the GS1 fields; 'GS1 Digital Link' builds an https://id.gs1.org URL from the same fields.</description>
+                    <enumerationValues>
+                        <enumerationValue key="text">Value</enumerationValue>
+                        <enumerationValue key="gs1">GS1 element string</enumerationValue>
+                        <enumerationValue key="digitalLink">GS1 Digital Link URL</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="value" type="expression" required="false">
+                    <caption>Value</caption>
+                    <description>Text to encode, e.g. 'ORDER-0001' or $currentObject/Code. For EAN-13 an add-on follows after a space: '9780201379625 90000'.</description>
+                    <returnType type="String" />
+                </property>
+                <property key="caption" type="textTemplate" required="false">
+                    <caption>Caption</caption>
+                    <description>Optional text shown under the barcode (outside the image).</description>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="GS1 fields">
+                <property key="gs1Gtin" type="expression" required="false">
+                    <caption>GTIN (01)</caption>
+                    <description>Global Trade Item Number, 8 to 14 digits. It is left-padded to 14 digits; see 'GTIN check digit' for the check digit.</description>
+                    <returnType type="String" />
+                </property>
+                <property key="gs1CheckDigit" type="enumeration" defaultValue="keep">
+                    <caption>GTIN check digit</caption>
+                    <description>'Keep' encodes the GTIN as entered (the encoder rejects a wrong check digit). 'Append' calculates the check digit and adds it to the digits you provide.</description>
+                    <enumerationValues>
+                        <enumerationValue key="keep">Keep as entered</enumerationValue>
+                        <enumerationValue key="append">Append calculated check digit</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="gs1Sscc" type="expression" required="false">
+                    <caption>SSCC (00)</caption>
+                    <description>Serial Shipping Container Code, 18 digits (17 when the check digit is appended).</description>
+                    <returnType type="String" />
+                </property>
+                <property key="gs1Content" type="expression" required="false">
+                    <caption>Content GTIN (02)</caption>
+                    <description>GTIN of the trade items contained in a logistic unit. Requires 'Count (37)'.</description>
+                    <returnType type="String" />
+                </property>
+                <property key="gs1Count" type="expression" required="false">
+                    <caption>Count (37)</caption>
+                    <description>Number of trade items contained in a logistic unit.</description>
+                    <returnType type="Integer" />
+                </property>
+                <property key="gs1Lot" type="expression" required="false">
+                    <caption>Batch or lot (10)</caption>
+                    <description>Batch or lot number, up to 20 characters.</description>
+                    <returnType type="String" />
+                </property>
+                <property key="gs1Serial" type="expression" required="false">
+                    <caption>Serial number (21)</caption>
+                    <description>Serial number, up to 20 characters.</description>
+                    <returnType type="String" />
+                </property>
+                <property key="gs1ProductionDate" type="expression" required="false">
+                    <caption>Production date (11)</caption>
+                    <description>Encoded as YYMMDD.</description>
+                    <returnType type="DateTime" />
+                </property>
+                <property key="gs1BestBefore" type="expression" required="false">
+                    <caption>Best before (15)</caption>
+                    <description>Encoded as YYMMDD.</description>
+                    <returnType type="DateTime" />
+                </property>
+                <property key="gs1Expiry" type="expression" required="false">
+                    <caption>Expiry date (17)</caption>
+                    <description>Encoded as YYMMDD.</description>
+                    <returnType type="DateTime" />
+                </property>
+                <property key="gs1Weight" type="expression" required="false">
+                    <caption>Net weight kg (310n)</caption>
+                    <description>Net weight in kilograms with up to 3 decimals, e.g. 12.345 becomes (3103)000012345.</description>
+                    <returnType type="Decimal" />
+                </property>
+                <property key="gs1Price" type="expression" required="false">
+                    <caption>Price (392n)</caption>
+                    <description>Amount payable in the local currency with up to 3 decimals, e.g. 9.99 becomes (3922)000999.</description>
+                    <returnType type="Decimal" />
+                </property>
+                <property key="gs1Extra" type="expression" required="false">
+                    <caption>More element strings</caption>
+                    <description>Additional application identifiers appended as is, e.g. '(240)ABC(91)INTERNAL'. For a Digital Link they become query parameters.</description>
+                    <returnType type="String" />
+                </property>
+                <property key="gs1Domain" type="expression" required="false" defaultValue="'https://id.gs1.org'">
+                    <caption>Digital Link domain</caption>
+                    <description>Resolver used for GS1 Digital Link URLs. Use your own domain to redirect scans to your app.</description>
+                    <returnType type="String" />
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="List">
+                <property key="dataSource" type="datasource" isList="true" required="false">
+                    <caption>Data source</caption>
+                    <description>Objects to render one barcode for.</description>
+                </property>
+                <property key="listValue" type="expression" dataSource="dataSource" required="false">
+                    <caption>Value</caption>
+                    <description>Text to encode for each object. GS1 symbologies expect the bracket notation, e.g. '(01)' + $currentObject/GTIN.</description>
+                    <returnType type="String" />
+                </property>
+                <property key="listSymbology" type="expression" dataSource="dataSource" required="false">
+                    <caption>Symbology per object</caption>
+                    <description>Optional BWIPP encoder name per object, e.g. $currentObject/BarcodeType. Empty uses the 'Symbology' property.</description>
+                    <returnType type="String" />
+                </property>
+                <property key="listExtraOptions" type="expression" dataSource="dataSource" required="false">
+                    <caption>Extra BWIPP options per object</caption>
+                    <description>Optional encoder options per object in BWIPP syntax, e.g. $currentObject/Options with 'columns=4' or 'eclevel=H'. Empty uses the 'Extra BWIPP options' property.</description>
+                    <returnType type="String" />
+                </property>
+                <property key="listLabel" type="expression" dataSource="dataSource" required="false">
+                    <caption>Label</caption>
+                    <description>Caption under each barcode and on printed label sheets.</description>
+                    <returnType type="String" />
+                </property>
+                <property key="listFileName" type="expression" dataSource="dataSource" required="false">
+                    <caption>File name</caption>
+                    <description>File name (without extension) per object for downloads and the ZIP. Empty numbers them.</description>
+                    <returnType type="String" />
+                </property>
+                <property key="listGap" type="integer" defaultValue="16">
+                    <caption>Gap</caption>
+                    <description>Space between the barcodes in pixels.</description>
+                </property>
+                <property key="listLazyRender" type="boolean" defaultValue="true">
+                    <caption>Render when visible</caption>
+                    <description>Render each barcode only when it scrolls into view. Keeps long lists fast.</description>
+                </property>
+                <property key="listEmptyText" type="textTemplate" required="false">
+                    <caption>Empty message</caption>
+                    <description>Shown when the data source has no objects.</description>
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+        <propertyGroup caption="Design">
+            <propertyGroup caption="Size">
+                <property key="scale" type="integer" defaultValue="3">
+                    <caption>Scale</caption>
+                    <description>Pixels per module (the narrowest bar). 2 to 4 is typical for screens; use 6 or more for print.</description>
+                </property>
+                <property key="height" type="integer" defaultValue="12">
+                    <caption>Bar height (mm)</caption>
+                    <description>Height of the bars of one-dimensional codes in millimetres at scale 1. Ignored by matrix codes.</description>
+                </property>
+                <property key="width" type="integer" defaultValue="0">
+                    <caption>Minimum width (mm)</caption>
+                    <description>Stretches one-dimensional codes to at least this width in millimetres at scale 1. 0 uses the natural width.</description>
+                </property>
+                <property key="sizeMode" type="enumeration" defaultValue="fixed">
+                    <caption>Size mode</caption>
+                    <description>'Natural' uses the pixel size that follows from the scale. 'Fit container' scales the SVG to the width of the widget.</description>
+                    <enumerationValues>
+                        <enumerationValue key="fixed">Natural size</enumerationValue>
+                        <enumerationValue key="fit">Fit container</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="rotate" type="enumeration" defaultValue="N">
+                    <caption>Rotation</caption>
+                    <description>Orientation of the barcode.</description>
+                    <enumerationValues>
+                        <enumerationValue key="N">Normal</enumerationValue>
+                        <enumerationValue key="R">Rotated right (90°)</enumerationValue>
+                        <enumerationValue key="I">Inverted (180°)</enumerationValue>
+                        <enumerationValue key="L">Rotated left (270°)</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="padding" type="integer" defaultValue="8">
+                    <caption>Padding</caption>
+                    <description>Quiet zone around the barcode in pixels (before scaling), filled with the background colour.</description>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Colours">
+                <property key="barColor" type="string" defaultValue="#000000">
+                    <caption>Bar colour</caption>
+                    <description>Colour of the bars or modules as #RRGGBB. Keep a strong contrast with the background so scanners can read the code.</description>
+                </property>
+                <property key="backgroundTransparent" type="boolean" defaultValue="false">
+                    <caption>Transparent background</caption>
+                    <description>Leave the background transparent (PNG, WEBP, SVG). JPEG is always exported on white.</description>
+                </property>
+                <property key="backgroundColor" type="string" defaultValue="#ffffff">
+                    <caption>Background colour</caption>
+                    <description>Background colour as #RRGGBB.</description>
+                </property>
+                <property key="textColor" type="string" required="false">
+                    <caption>Text colour</caption>
+                    <description>Colour of the human readable text. Empty uses the bar colour.</description>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Human readable text">
+                <property key="includeText" type="boolean" defaultValue="true">
+                    <caption>Show text</caption>
+                    <description>Print the encoded value under (or above) the bars. Matrix codes have no text.</description>
+                </property>
+                <property key="altText" type="expression" required="false">
+                    <caption>Custom text</caption>
+                    <description>Text shown instead of the encoded value, e.g. a formatted GTIN.</description>
+                    <returnType type="String" />
+                </property>
+                <property key="textFont" type="enumeration" defaultValue="OCRB">
+                    <caption>Font</caption>
+                    <description>Built-in barcode fonts. OCR-B is the GS1 standard.</description>
+                    <enumerationValues>
+                        <enumerationValue key="OCRB">OCR-B</enumerationValue>
+                        <enumerationValue key="OCRA">OCR-A</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="textSize" type="integer" defaultValue="10">
+                    <caption>Font size</caption>
+                    <description>Text size in points at scale 1.</description>
+                </property>
+                <property key="textAlign" type="enumeration" defaultValue="center">
+                    <caption>Horizontal alignment</caption>
+                    <description>Where the text sits under the bars. 'Justify' spreads it across the full width.</description>
+                    <enumerationValues>
+                        <enumerationValue key="center">Center</enumerationValue>
+                        <enumerationValue key="left">Left</enumerationValue>
+                        <enumerationValue key="right">Right</enumerationValue>
+                        <enumerationValue key="justify">Justify</enumerationValue>
+                        <enumerationValue key="offleft">Outside left</enumerationValue>
+                        <enumerationValue key="offright">Outside right</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="textPosition" type="enumeration" defaultValue="below">
+                    <caption>Vertical position</caption>
+                    <description>Text below the bars, above them or centred over them.</description>
+                    <enumerationValues>
+                        <enumerationValue key="below">Below</enumerationValue>
+                        <enumerationValue key="above">Above</enumerationValue>
+                        <enumerationValue key="center">Center</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="textOffset" type="integer" defaultValue="0">
+                    <caption>Vertical offset</caption>
+                    <description>Moves the text away from the bars in points; a negative value moves it closer or over the bars.</description>
+                </property>
+                <property key="textGaps" type="integer" defaultValue="0">
+                    <caption>Letter spacing</caption>
+                    <description>Extra space between characters, in points.</description>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Border">
+                <property key="showBorder" type="boolean" defaultValue="false">
+                    <caption>Show border</caption>
+                    <description>Draw a border around the barcode (bearer bars for ITF-14).</description>
+                </property>
+                <property key="borderWidth" type="integer" defaultValue="2">
+                    <caption>Border width</caption>
+                    <description>Thickness of the border in points.</description>
+                </property>
+                <property key="borderColor" type="string" required="false">
+                    <caption>Border colour</caption>
+                    <description>Colour of the border as #RRGGBB. Empty uses the bar colour.</description>
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+        <propertyGroup caption="Encoding">
+            <propertyGroup caption="Options">
+                <property key="includeCheck" type="boolean" defaultValue="false">
+                    <caption>Add check digit</caption>
+                    <description>Append a check character for symbologies where it is optional (Code 39, Code 93, ITF, Code 11, MSI, Codabar).</description>
+                </property>
+                <property key="includeCheckInText" type="boolean" defaultValue="false">
+                    <caption>Show check digit in text</caption>
+                    <description>Include the check character in the human readable text.</description>
+                </property>
+                <property key="guardWhitespace" type="boolean" defaultValue="true">
+                    <caption>Quiet zone marks</caption>
+                    <description>Print the '&lt;' and '&gt;' quiet zone indicators of EAN and UPC codes.</description>
+                </property>
+                <property key="parse" type="boolean" defaultValue="false">
+                    <caption>Parse escapes</caption>
+                    <description>Interpret '^NNN' in the value as the character with that decimal code, e.g. '^009' for a tab.</description>
+                </property>
+                <property key="parseFnc" type="boolean" defaultValue="false">
+                    <caption>Parse function codes</caption>
+                    <description>Interpret '^FNC1' to '^FNC4' in the value as function characters (Code 128, Code 93, Data Matrix, QR).</description>
+                </property>
+                <property key="inkSpread" type="decimal" defaultValue="0">
+                    <caption>Ink spread compensation</caption>
+                    <description>Shrinks the bars by this amount in points to compensate for ink bleed on thermal printers, e.g. 0.15.</description>
+                </property>
+                <property key="extraOptions" type="expression" required="false">
+                    <caption>Extra BWIPP options</caption>
+                    <description>Space-separated encoder options in BWIPP syntax for anything not covered above, e.g. 'eclevel=H version=8' for QR, 'columns=4 rows=10' for PDF417, 'format=square' for Data Matrix.</description>
+                    <returnType type="String" />
+                </property>
+                <property key="maxPayloadLength" type="integer" defaultValue="4000">
+                    <caption>Maximum length</caption>
+                    <description>Values longer than this are not encoded; the 'Too long' message is shown instead.</description>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Validation">
+                <property key="invalidText" type="textTemplate" required="false">
+                    <caption>Invalid message</caption>
+                    <description>Shown when the value cannot be encoded, e.g. a wrong EAN check digit. Use [error] for the encoder's message.</description>
+                    <translations>
+                        <translation lang="en_US">Cannot encode: [error]</translation>
+                    </translations>
+                </property>
+                <property key="payloadTooLongText" type="textTemplate" required="false">
+                    <caption>Too long message</caption>
+                    <description>Shown when the value exceeds the maximum length.</description>
+                    <translations>
+                        <translation lang="en_US">The content is too long for a barcode.</translation>
+                    </translations>
+                </property>
+                <property key="validAttribute" type="attribute" required="false">
+                    <caption>Valid attribute</caption>
+                    <description>Boolean attribute set to true when the value was encoded and false when the encoder rejected it.</description>
+                    <attributeTypes>
+                        <attributeType name="Boolean" />
+                    </attributeTypes>
+                </property>
+                <property key="encodedAttribute" type="attribute" required="false">
+                    <caption>Encoded value attribute</caption>
+                    <description>String attribute that receives the final text passed to the encoder, e.g. the GS1 element string built from the fields.</description>
+                    <attributeTypes>
+                        <attributeType name="String" />
+                    </attributeTypes>
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+        <propertyGroup caption="Toolbar">
+            <propertyGroup caption="Buttons">
+                <property key="showDownloadPng" type="boolean" defaultValue="true">
+                    <caption>Download PNG</caption>
+                    <description>Show a button that downloads the barcode as PNG.</description>
+                </property>
+                <property key="showDownloadSvg" type="boolean" defaultValue="true">
+                    <caption>Download SVG</caption>
+                    <description>Show a button that downloads the barcode as SVG (best for print).</description>
+                </property>
+                <property key="showDownloadJpeg" type="boolean" defaultValue="false">
+                    <caption>Download JPEG</caption>
+                    <description>Show a button that downloads the barcode as JPEG.</description>
+                </property>
+                <property key="showDownloadWebp" type="boolean" defaultValue="false">
+                    <caption>Download WEBP</caption>
+                    <description>Show a button that downloads the barcode as WEBP.</description>
+                </property>
+                <property key="showCopy" type="boolean" defaultValue="true">
+                    <caption>Copy</caption>
+                    <description>Show a button that copies the barcode image to the clipboard.</description>
+                </property>
+                <property key="showPrint" type="boolean" defaultValue="true">
+                    <caption>Print</caption>
+                    <description>Show a button that prints the barcode.</description>
+                </property>
+                <property key="showSave" type="boolean" defaultValue="false">
+                    <caption>Save now</caption>
+                    <description>Show a button that writes the image to the base64 attribute immediately.</description>
+                </property>
+                <property key="showDownloadZip" type="boolean" defaultValue="true">
+                    <caption>Download ZIP (list)</caption>
+                    <description>Show a button that downloads all barcodes of the list as PNG files in one ZIP.</description>
+                </property>
+                <property key="showPrintSheet" type="boolean" defaultValue="true">
+                    <caption>Print label sheet (list)</caption>
+                    <description>Show a button that prints all barcodes as a label sheet.</description>
+                </property>
+                <property key="showDownloadPdf" type="boolean" defaultValue="true">
+                    <caption>Download PDF (list)</caption>
+                    <description>Show a button that downloads all barcodes as an A4 label-sheet PDF.</description>
+                </property>
+                <property key="fileName" type="expression" required="false" defaultValue="'barcode'">
+                    <caption>File name</caption>
+                    <description>File name without extension for downloads. In list mode it is the base name for numbered files and the ZIP.</description>
+                    <returnType type="String" />
+                </property>
+                <property key="buttonStyle" type="enumeration" defaultValue="default">
+                    <caption>Button style</caption>
+                    <description>Bootstrap style of the toolbar buttons.</description>
+                    <enumerationValues>
+                        <enumerationValue key="default">Default</enumerationValue>
+                        <enumerationValue key="primary">Primary</enumerationValue>
+                        <enumerationValue key="secondary">Secondary</enumerationValue>
+                        <enumerationValue key="link">Link</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="toolbarPosition" type="enumeration" defaultValue="bottom">
+                    <caption>Toolbar position</caption>
+                    <description>Where the buttons appear.</description>
+                    <enumerationValues>
+                        <enumerationValue key="bottom">Below the barcode</enumerationValue>
+                        <enumerationValue key="top">Above the barcode</enumerationValue>
+                    </enumerationValues>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Labels">
+                <property key="labelDownload" type="textTemplate" required="false">
+                    <caption>Download</caption>
+                    <description>Prefix of the download buttons; the format is appended.</description>
+                    <translations>
+                        <translation lang="en_US">Download</translation>
+                    </translations>
+                </property>
+                <property key="labelCopy" type="textTemplate" required="false">
+                    <caption>Copy</caption>
+                    <description>Label of the copy button.</description>
+                    <translations>
+                        <translation lang="en_US">Copy</translation>
+                    </translations>
+                </property>
+                <property key="labelCopied" type="textTemplate" required="false">
+                    <caption>Copied</caption>
+                    <description>Label shown briefly after copying.</description>
+                    <translations>
+                        <translation lang="en_US">Copied</translation>
+                    </translations>
+                </property>
+                <property key="labelPrint" type="textTemplate" required="false">
+                    <caption>Print</caption>
+                    <description>Label of the print button.</description>
+                    <translations>
+                        <translation lang="en_US">Print</translation>
+                    </translations>
+                </property>
+                <property key="labelSave" type="textTemplate" required="false">
+                    <caption>Save</caption>
+                    <description>Label of the save button.</description>
+                    <translations>
+                        <translation lang="en_US">Save</translation>
+                    </translations>
+                </property>
+                <property key="labelSaved" type="textTemplate" required="false">
+                    <caption>Saved</caption>
+                    <description>Label shown briefly after saving.</description>
+                    <translations>
+                        <translation lang="en_US">Saved</translation>
+                    </translations>
+                </property>
+                <property key="labelZip" type="textTemplate" required="false">
+                    <caption>Download ZIP</caption>
+                    <description>Label of the ZIP button.</description>
+                    <translations>
+                        <translation lang="en_US">Download ZIP</translation>
+                    </translations>
+                </property>
+                <property key="labelPrintSheet" type="textTemplate" required="false">
+                    <caption>Print sheet</caption>
+                    <description>Label of the print sheet button.</description>
+                    <translations>
+                        <translation lang="en_US">Print sheet</translation>
+                    </translations>
+                </property>
+                <property key="labelPdf" type="textTemplate" required="false">
+                    <caption>Download PDF</caption>
+                    <description>Label of the PDF button.</description>
+                    <translations>
+                        <translation lang="en_US">Download PDF</translation>
+                    </translations>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Label sheet">
+                <property key="sheetColumns" type="integer" defaultValue="3">
+                    <caption>Columns</caption>
+                    <description>Labels per row on the printed sheet and the PDF.</description>
+                </property>
+                <property key="sheetLabelWidth" type="integer" defaultValue="63">
+                    <caption>Label width (mm)</caption>
+                    <description>Width of one label. 63 x 38 mm matches common 21-per-sheet A4 label paper.</description>
+                </property>
+                <property key="sheetLabelHeight" type="integer" defaultValue="38">
+                    <caption>Label height (mm)</caption>
+                    <description>Height of one label.</description>
+                </property>
+                <property key="sheetGap" type="integer" defaultValue="3">
+                    <caption>Gap (mm)</caption>
+                    <description>Space between labels.</description>
+                </property>
+                <property key="sheetShowLabel" type="boolean" defaultValue="true">
+                    <caption>Print label text</caption>
+                    <description>Print the 'Label' of each object under its barcode.</description>
+                </property>
+                <property key="sheetTitle" type="textTemplate" required="false">
+                    <caption>Sheet title</caption>
+                    <description>Title printed at the top of the sheet and used as the PDF and ZIP file name.</description>
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+        <propertyGroup caption="Save to Mendix">
+            <propertyGroup caption="Image attribute">
+                <property key="base64Attribute" type="attribute" required="false">
+                    <caption>Base64 attribute</caption>
+                    <description>String attribute (unlimited length) that receives the rendered image as base64 after every change. Use it to store the barcode or send it to a report.</description>
+                    <attributeTypes>
+                        <attributeType name="String" />
+                    </attributeTypes>
+                </property>
+                <property key="base64Format" type="enumeration" defaultValue="png">
+                    <caption>Format</caption>
+                    <description>Image format that is saved.</description>
+                    <enumerationValues>
+                        <enumerationValue key="png">PNG</enumerationValue>
+                        <enumerationValue key="svg">SVG</enumerationValue>
+                        <enumerationValue key="jpeg">JPEG</enumerationValue>
+                        <enumerationValue key="webp">WEBP</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="base64DataUri" type="boolean" defaultValue="false">
+                    <caption>Save as data URI</caption>
+                    <description>Prefix the value with 'data:image/...;base64,' so it can be used directly as an image source.</description>
+                </property>
+                <property key="saveDebounce" type="integer" defaultValue="400">
+                    <caption>Save delay (ms)</caption>
+                    <description>Wait this long after the last change before writing, so typing does not save on every keystroke.</description>
+                </property>
+                <property key="onImageSaved" type="action" required="false">
+                    <caption>On image saved</caption>
+                    <description>Runs after the base64 attribute was written, e.g. to commit the object.</description>
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+        <propertyGroup caption="Events">
+            <propertyGroup caption="Events">
+                <property key="onClick" type="action" required="false">
+                    <caption>On click</caption>
+                    <description>Runs when the barcode is clicked.</description>
+                </property>
+                <property key="onRender" type="action" required="false">
+                    <caption>On render</caption>
+                    <description>Runs after every render with the encoded value, whether it was valid and the encoder message.</description>
+                    <actionVariables>
+                        <actionVariable key="encodedValue" type="String" caption="Encoded value" />
+                        <actionVariable key="isValid" type="Boolean" caption="Is valid" />
+                        <actionVariable key="errorMessage" type="String" caption="Error message" />
+                    </actionVariables>
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+        <propertyGroup caption="Accessibility">
+            <propertyGroup caption="Accessibility">
+                <property key="ariaLabel" type="textTemplate" required="false">
+                    <caption>Aria label</caption>
+                    <description>Screen reader description of the barcode image.</description>
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+    </properties>
+</widget>
