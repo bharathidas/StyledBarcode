@@ -182,14 +182,19 @@ selected code; Design mode renders the barcode at design time.
 
 ![Styled Barcode in Design mode, rendering a Code 128 preview](docs/studio-pro.png)
 
-The rest are taken from the demo page in the example app.
+The properties dialog, tab by tab:
+
+| Tab | |
+| --- | --- |
+| General | [data, symbology, payload and the GS1 fields](docs/screenshots/screenshot-6.png) |
+| Design | [size, colours, human readable text and border](docs/screenshots/screenshot-7.png) |
+| Encoding and Toolbar | [encoder options, validation, buttons and the label sheet](docs/screenshots/screenshot-8.png) |
+| Save to Mendix, Events, Accessibility | [attributes, actions and the aria label](docs/screenshots/screenshot-9.png) |
+
+And the demo page in the example app:
 
 | | |
 | --- | --- |
 | ![Code 128 asset tag with every export, and the toolbar variants](docs/screenshots/screenshot-1.png) | ![GS1 element strings and Digital Links, retail codes](docs/screenshots/screenshot-2.png) |
 | ![Logistics and industrial codes, two-dimensional codes](docs/screenshots/screenshot-3.png) | ![Colours and layout, human readable text](docs/screenshots/screenshot-4.png) |
-| ![Size and rotation, encoding options](docs/screenshots/screenshot-5.png) | ![Validation, and saving an SVG data URI](docs/screenshots/screenshot-6.png) |
-| ![Saving the image and the encoded value to attributes](docs/screenshots/screenshot-7.png) | ![Bulk list mode with label sheets, and the symbology gallery](docs/screenshots/screenshot-8.png) |
-
-Also in the set: [the widget in Studio Pro, Structure and Design mode](docs/screenshots/screenshot-9.png) and
-[a reference of all 98 properties](docs/screenshots/screenshot-10.png), generated from the widget XML.
+| ![Bulk list mode with label sheets, and the symbology gallery](docs/screenshots/screenshot-5.png) | ![The widget in Studio Pro](docs/screenshots/screenshot-10.png) |
